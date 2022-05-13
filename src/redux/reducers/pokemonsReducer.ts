@@ -6,8 +6,8 @@ import { PokemonsActions } from "../actions/pokemonsActions";
 import { GetResult, PokemonDetail } from "../types/pokemons.types"
 
 export type PokemonsState = {
-    readonly pokemonList: GetResult;
-    readonly selectedPokemon: PokemonDetail
+    readonly pokemonList: GetResult | {};
+    readonly selectedPokemon: PokemonDetail | {};
 }
 
 export const pokemonsState: PokemonsState = {
@@ -16,7 +16,7 @@ export const pokemonsState: PokemonsState = {
 };
 
 // Discreminating Union "action = {} as BlablaActions"
-export function pokemonsReducer (state = pokemonsState, action = {}as PokemonsActions) {
+export function pokemonsReducer (state = pokemonsState, action = {} as PokemonsActions) {
     switch (action.type){
         case ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMONS:
             return { ...state, pokemonList: action.payload }
