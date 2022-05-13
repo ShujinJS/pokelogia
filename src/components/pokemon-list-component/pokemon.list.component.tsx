@@ -1,14 +1,18 @@
 import { useEffect, useState, ChangeEvent } from 'react';
 // Utils
 import { getData } from "../../utils/data.utils";
-import { GetResult, Pokemon} from "../../types/pokemon-list-types/pokemon.list.type";
+import { GetResult, Pokemon } from "../../types/pokemon-list-types/pokemon.list.type";
+// Redux Saga
+import { useSelector, useDispatch } from "react-redux";
+import rootAction from '../../redux/actions/rootAction';
 
 function PokemonList(){
     const [pokemons, setPokemons] = useState<Pokemon[]>();
     const [filteredPokemons, setFilteredPokemons] = useState(pokemons);
     const [searchBox, setSearchBox] = useState("");
-
-
+    
+    const pokemonsData = useSelector((state) => state.pokemons)
+    const dispatch = useDispatch();
 
     const fetchPokemons = async () => {
         const pokemons = await getData<GetResult>("https://pokeapi.co/api/v2/pokemon?limit=9999");
@@ -16,7 +20,8 @@ function PokemonList(){
     };
 
     useEffect(() => {  
-        fetchPokemons();
+        //fetchPokemons();
+        dispatch(rootAction.pokemonsActions.getPokemons())
     }, []);
 
     const newFilteredPokemons = pokemons?.filter((pokemon) => {

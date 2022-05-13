@@ -4,6 +4,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 // Routing
 import { BrowserRouter } from "react-router-dom";
+// Redux
+import {Provider} from "react-redux";
+import appStore from "./redux/appStore";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,7 +14,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <BrowserRouter>
-    <App />
+    <Provider store={appStore}>
+      <App />
+    </Provider>
   </BrowserRouter>
 );
 
