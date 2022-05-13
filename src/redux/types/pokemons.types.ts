@@ -23,203 +23,187 @@ export type PickedPokemon = {
     index: Number
 }
 
-export type PokemonDetail = {
-    abilities: [PokemonAbility];
-    base_experience: Number;
-    forms: [PokemonForm];
-    game_indices: [PokemonGameIndex];
-    height: Number;
-    held_items?: [];
-    id: Number;
+export interface PokemonDetail {
+    abilities?: (AbilitiesEntity)[] | null;
+    base_experience: number;
+    forms?: (AbilityOrFormsEntityOrVersionOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies)[] | null;
+    game_indices?: (GameIndicesEntity)[] | null;
+    height: number;
+    held_items?: (null)[] | null;
+    id: number;
     is_default: boolean;
-    location_area_encounter: string;
-    moves: [PokemonMove];
+    location_area_encounters: string;
+    moves?: (MovesEntity)[] | null;
     name: string;
-    order: Number;
-    past_types?: [];
-    species: {
-        name: string;
-        url: string
-    };
-    sprites: {
-        back_default?: string | null;
-        back_female?: string | null;
-        back_shiny?: string | null;
-        back_shiny_female?: string | null;
-        front_default?: string | null;
-        front_female?: string | null;
-        front_shiny?: string | null;
-        front_shiny_female?: string | null;
-        other: {
-            dream_world: {
-                front_default?: string | null;
-                front_female?: string | null;
-            };
-            home: {
-                front_default?: string | null;
-                front_female?: string | null;
-                front_shiny?: string | null;
-                front_shiny_female?: string | null 
-            };
-            official_artwork: {
-                front_default?: string | null
-            }
-        };
-        versions: {
-            generation_i?: {
-                red_blue?: {
-                    back_default?: string | null;
-                    back_gray?: string | null;
-                    back_transparent?: string | null;
-                    front_default?: string | null;
-                    front_gray?: string | null;
-                    front_transparent?: string | null
-                };
-                yellow?: {
-                    back_default?: string | null;
-                    back_gray?: string | null;
-                    back_transparent?: string | null;
-                    front_default?: string | null;
-                    front_gray?: string | null;
-                    front_transparent?: string | null
-                };
-            };
-            generation_ii?: {
-                crystal?: {
-                    back_default?: string | null;
-                    back_shiny?: string | null;
-                    back_shiny_transparent?: string | null;
-                    back_transparent?: string | null;
-                    front_default?: string | null;
-                    front_shiny?: string | null;
-                    front_shiny_transparent?: string | null;
-                    front_transparent?: string | null
-                };
-                gold?: {
-                    back_default?: string | null;
-                    back_shiny?: string | null;
-                    front_default?: string | null;
-                    front_shiny?: string | null;
-                    front_transparent?: string | null
-                };
-                silver: {
-                    back_default?: string | null;
-                    back_shiny?: string | null;
-                    front_default?: string | null;
-                    front_shiny?: string | null;
-                    front_transparent?: string | null
-                }
-            };
-            generation_iii?:{
-                emerald?: {
-                    front_default?: string | null;
-                    front_shiny?: string | null
-                };
-                filtered_leafgreen?: {
-                    back_default?: string | null;
-                    back_shiny?: string | null;
-                    front_default?: string | null;
-                    front_shiny?: string | null;
-                };
-                ruby_sapphire?: {
-                    back_default?: string | null;
-                    back_shiny?: string | null;
-                    front_default?: string | null;
-                    front_shiny?: string | null;
-                }
-            };
-            generation_iv?: {
-                diamond_pearl?: {
-                    back_default?: string | null;
-                    back_female?: string | null;
-                    back_shiny?: string | null;
-                    back_shiny_female?: string | null;
-                    front_default?: string | null;
-                    front_female?: string | null;
-                    front_shiny?: string | null;
-                    front_shiny_female?: string | null;
-                };
-                hearthgold_soulsilver?: {
-                    back_default?: string | null;
-                    back_female?: string | null;
-                    back_shiny?: string | null;
-                    back_shiny_female?: string | null;
-                    front_default?: string | null;
-                    front_female?: string | null;
-                    front_shiny?: string | null;
-                    front_shiny_female?: string | null;
-                };
-                platinum?: {
-                    back_default?: string | null;
-                    back_female?: string | null;
-                    back_shiny?: string | null;
-                    back_shiny_female?: string | null;
-                    front_default?: string | null;
-                    front_female?: string | null;
-                    front_shiny?: string | null;
-                    front_shiny_female?: string | null;
-                }
-            };
-            generation_v?:{
-                black_white?: {
-                    animated?: {
-                        back_default?: string | null;
-                        back_female?: string | null;
-                        back_shiny?: string | null;
-                        back_shiny_female?: string | null;
-                        front_default?: string | null;
-                        front_female?: string | null;
-                        front_shiny?: string | null;
-                        front_shiny_female?: string | null;
-                    };
-                    back_default?: string | null;
-                    back_female?: string | null;
-                    back_shiny?: string | null;
-                    back_shiny_female?: string | null;
-                    front_default?: string | null;
-                    front_female?: string | null;
-                    front_shiny?: string | null;
-                    front_shiny_female?: string | null;
-                }
-            };
-            generation_vi?: {
-                omegaruby_alphasapphire?: {
-                    front_default?: string | null;
-                    front_female?: string | null;
-                    front_shiny?: string | null;
-                    front_shiny_female?: string | null;
-                };
-                x_y?: {
-                    front_default?: string | null;
-                    front_female?: string | null;
-                    front_shiny?: string | null;
-                    front_shiny_female?: string | null;
-                }
-            };
-            generation_vii?: {
-                icons: {
-                    front_default?: string | null;
-                    front_female?: string | null;  
-                };
-                ultra_sun_ultra_moon?: {
-                    front_default?: string | null;
-                    front_female?: string | null;
-                    front_shiny?: string | null;
-                    front_shiny_female?: string | null;
-                }
-            };
-            generations_viii?: {
-                icons: {
-                    front_default?: string | null;
-                    front_female?: string | null;
-                }
-            }
-        }
-    };
-    stats: [PokemonStats];
-    type: [PokemonType];
-    weight: Number;
-}
+    order: number;
+    past_types?: (null)[] | null;
+    species: AbilityOrFormsEntityOrVersionOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+    sprites: Sprites;
+    stats?: (StatsEntity)[] | null;
+    types?: (TypesEntity)[] | null;
+    weight: number;
+  }
+  export interface AbilitiesEntity {
+    ability: AbilityOrFormsEntityOrVersionOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+    is_hidden: boolean;
+    slot: number;
+  }
+  export interface AbilityOrFormsEntityOrVersionOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies {
+    name: string;
+    url: string;
+  }
+  export interface GameIndicesEntity {
+    game_index: number;
+    version: AbilityOrFormsEntityOrVersionOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+  }
+  export interface MovesEntity {
+    move: AbilityOrFormsEntityOrVersionOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+    version_group_details?: (VersionGroupDetailsEntity)[] | null;
+  }
+  export interface VersionGroupDetailsEntity {
+    level_learned_at: number;
+    move_learn_method: AbilityOrFormsEntityOrVersionOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+    version_group: AbilityOrFormsEntityOrVersionOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+  }
+  export interface Sprites {
+    back_default: string;
+    back_female?: null;
+    back_shiny: string;
+    back_shiny_female?: null;
+    front_default: string;
+    front_female?: null;
+    front_shiny: string;
+    front_shiny_female?: null;
+    other: Other;
+    versions: Versions;
+  }
+  export interface Other {
+    dream_world: DreamWorldOrIcons;
+    home: HomeOrOmegaruby_alphasapphireOrX_yOrUltra_sun_ultra_moon;
+    official_artwork: Official_artwork;
+  }
+  export interface DreamWorldOrIcons {
+    front_default: string;
+    front_female?: null;
+  }
+  export interface HomeOrOmegaruby_alphasapphireOrX_yOrUltra_sun_ultra_moon {
+    front_default: string;
+    front_female?: null;
+    front_shiny: string;
+    front_shiny_female?: null;
+  }
+  export interface Official_artwork {
+    front_default: string;
+  }
+  export interface Versions {
+    generation_i: Generation_i;
+    generation_ii: Generation_ii;
+    generation_iii: Generation_iii;
+    generation_iv: Generation_iv;
+    generation_v: Generation_v;
+    generation_vi: Generation_vi;
+    generation_vii: Generation_vii;
+    generation_viii: Generation_viii;
+  }
+  export interface Generation_i {
+    red_blue: Red_blueOrYellow;
+    yellow: Red_blueOrYellow;
+  }
+  export interface Red_blueOrYellow {
+    back_default: string;
+    back_gray: string;
+    back_transparent: string;
+    front_default: string;
+    front_gray: string;
+    front_transparent: string;
+  }
+  export interface Generation_ii {
+    crystal: Crystal;
+    gold: GoldOrSilver;
+    silver: GoldOrSilver;
+  }
+  export interface Crystal {
+    back_default: string;
+    back_shiny: string;
+    back_shiny_transparent: string;
+    back_transparent: string;
+    front_default: string;
+    front_shiny: string;
+    front_shiny_transparent: string;
+    front_transparent: string;
+  }
+  export interface GoldOrSilver {
+    back_default: string;
+    back_shiny: string;
+    front_default: string;
+    front_shiny: string;
+    front_transparent: string;
+  }
+  export interface Generation_iii {
+    emerald: Emerald;
+    firered_leafgreen: Firered_leafgreenOrRuby_sapphire;
+    ruby_sapphire: Firered_leafgreenOrRuby_sapphire;
+  }
+  export interface Emerald {
+    front_default: string;
+    front_shiny: string;
+  }
+  export interface Firered_leafgreenOrRuby_sapphire {
+    back_default: string;
+    back_shiny: string;
+    front_default: string;
+    front_shiny: string;
+  }
+  export interface Generation_iv {
+    diamond_pearl: Diamond_pearlOrHeartgold_soulsilverOrPlatinumOrAnimated;
+    heartgold_soulsilver: Diamond_pearlOrHeartgold_soulsilverOrPlatinumOrAnimated;
+    platinum: Diamond_pearlOrHeartgold_soulsilverOrPlatinumOrAnimated;
+  }
+  export interface Diamond_pearlOrHeartgold_soulsilverOrPlatinumOrAnimated {
+    back_default: string;
+    back_female?: null;
+    back_shiny: string;
+    back_shiny_female?: null;
+    front_default: string;
+    front_female?: null;
+    front_shiny: string;
+    front_shiny_female?: null;
+  }
+  export interface Generation_v {
+    black_white: Black_white;
+  }
+  export interface Black_white {
+    animated: Diamond_pearlOrHeartgold_soulsilverOrPlatinumOrAnimated;
+    back_default: string;
+    back_female?: null;
+    back_shiny: string;
+    back_shiny_female?: null;
+    front_default: string;
+    front_female?: null;
+    front_shiny: string;
+    front_shiny_female?: null;
+  }
+  export interface Generation_vi {
+    omegaruby_alphasapphire: HomeOrOmegaruby_alphasapphireOrX_yOrUltra_sun_ultra_moon;
+    x_y: HomeOrOmegaruby_alphasapphireOrX_yOrUltra_sun_ultra_moon;
+  }
+  export interface Generation_vii {
+    icons: DreamWorldOrIcons;
+    ultra_sun_ultra_moon: HomeOrOmegaruby_alphasapphireOrX_yOrUltra_sun_ultra_moon;
+  }
+  export interface Generation_viii {
+    icons: DreamWorldOrIcons;
+  }
+  export interface StatsEntity {
+    base_stat: number;
+    effort: number;
+    stat: AbilityOrFormsEntityOrVersionOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+  }
+  export interface TypesEntity {
+    slot: number;
+    type: AbilityOrFormsEntityOrVersionOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+  }
+  
 
 export type PokemonAbility = {
     ability: {
