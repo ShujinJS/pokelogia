@@ -11,7 +11,7 @@ export type GetResult = {
     count: string;
     next: string;
     previous?: string;
-    results: [Pokemon]
+    results?: [Pokemon] | undefined
 }
 
 export type Pokemon = {
@@ -205,61 +205,61 @@ export interface PokemonDetail {
   }
   
 
-export type PokemonAbility = {
-    ability: {
-        name: string;
-        url: string
-    };
-    is_hidden: boolean;
-    slot: Number
-}
+// export type PokemonAbility = {
+//     ability: {
+//         name: string;
+//         url: string
+//     };
+//     is_hidden: boolean;
+//     slot: Number
+// }
 
-export type PokemonForm = {
-    name: string;
-    url: string
-}
+// export type PokemonForm = {
+//     name: string;
+//     url: string
+// }
 
-export type PokemonGameIndex = {
-    game_index: Number;
-    version: {
-        name: string;
-        url: string
-    }
-}
+// export type PokemonGameIndex = {
+//     game_index: Number;
+//     version: {
+//         name: string;
+//         url: string
+//     }
+// }
 
-export type PokemonMove = {
-    move: {
-        name: string;
-        url: string
-    };
-    version_group_details: [PokemonVersionGroupDetail]
-}
+// export type PokemonMove = {
+//     move: {
+//         name: string;
+//         url: string
+//     };
+//     version_group_details: [PokemonVersionGroupDetail]
+// }
 
-export type PokemonVersionGroupDetail = {
-    level_learned_at: Number;
-    move_learn_method: {
-        name: string;
-        url: string
-    };
-    version_group: {
-        name: string;
-        url: string
-    }
-}
+// export type PokemonVersionGroupDetail = {
+//     level_learned_at: Number;
+//     move_learn_method: {
+//         name: string;
+//         url: string
+//     };
+//     version_group: {
+//         name: string;
+//         url: string
+//     }
+// }
 
-export type PokemonStats = {
-    base_stat: Number;
-    effort: Number;
-    stat: {
-        name: string;
-        url: string
-    }
-}
+// export type PokemonStats = {
+//     base_stat: Number;
+//     effort: Number;
+//     stat: {
+//         name: string;
+//         url: string
+//     }
+// }
 
-export type PokemonType = {
-    slot: Number;
-    type: {
-        name: string;
-        url: string
-    }
-}
+// export type PokemonType = {
+//     slot: Number;
+//     type: {
+//         name: string;
+//         url: string
+//     }
+// }

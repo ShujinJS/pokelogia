@@ -1,13 +1,12 @@
-import { ROOT_ACTION_TYPES } from "../types/root.action.types";
-// type narrowing, type predicates
+import { AnyAction } from "redux";
 // Actions
-import { PokemonsActions } from "../actions/pokemonsActions";
+import  PokemonsActions from "../actions/pokemonsActions";
 // Types
-import { GetResult, PokemonDetail } from "../types/pokemons.types"
+import { GetResult, PokemonDetail, PickedPokemon } from "../types/pokemons.types"
 
 export type PokemonsState = {
     readonly pokemonList: GetResult | {};
-    readonly selectedPokemon: PokemonDetail | {};
+    readonly selectedPokemon: PickedPokemon | {};
 }
 
 export const pokemonsState: PokemonsState = {
@@ -15,16 +14,28 @@ export const pokemonsState: PokemonsState = {
     selectedPokemon: {}
 };
 
-// Discreminating Union "action = {} as BlablaActions"
-export function pokemonsReducer (state = pokemonsState, action = {} as PokemonsActions) {
-    switch (action.type){
-        case ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMONS:
-            return { ...state, pokemonList: action.payload }
-            break;
-        case ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMON_DETAIL:
-            return { ...state, selectedPokemon: action.payload }
-            break
-        default:
-            return state;
+// Discriminating Union "action = {} as BlablaActions"
+export const pokemonsReducer = (state = pokemonsState, action = {} as AnyAction ) : PokemonsState => {
+    if(PokemonsActions.setPokemons.match(action)){
+        console.log(state)
+        console.log(action.payload)
+        return { ...state, pokemonList: action.payload }
     }
+
+    if(PokemonsActions.setPokemonDetail.match(action)){
+        return { ...state, selectedPokemon: action.payload }
+    }
+
+    return state;
+
+    // switch (action.type){
+    //     case ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMONS:
+    //         return { ...state, pokemonList: action.payload }
+    //         break;
+    //     case ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMON_DETAIL:
+    //         return { ...state, selectedPokemon: action.payload }
+    //         break
+    //     default:
+    //         return state;
+    // }
 }

@@ -1,46 +1,52 @@
-import { call, put } from "@redux-saga/core/effects";
+//import { call, put } from "@redux-saga/core/effects";
 import rootActions from "../actions/rootAction";
 import axios from "axios";
-import { takeLatest } from "redux-saga/effects";
+//import { takeLatest } from "redux-saga/effects";
+import { takeLatest, call, put } from "typed-redux-saga";
 import { ROOT_ACTION_TYPES } from "../types/root.action.types";
-
+import PokemonsActions from "../actions/pokemonsActions"
+// Actions
+import { AnyAction } from "redux";
 // Utils
 import { getData } from "../../utils/data.utils";
-import { GetResult, Pokemon } from "../../types/pokemon-list-types/pokemon.list.type";
+import { GetResult, PokemonDetail, PickedPokemon } from "../../redux/types/pokemons.types";
 
 const fetchPokemons = async () => {
     try{
         const pokemonsData = await getData<GetResult>("https://pokeapi.co/api/v2/pokemon?limit=9999");
-        return pokemonsData.results;
+        console.log(pokemonsData)
+        return pokemonsData;
     } catch (err) {
         throw err;
     }
 };
 
-const fetchPokemonDetail = async (selectedPokemon) => {
+const fetchPokemonDetail = async (selectedPokemon: PickedPokemon) => {
     try {
-        const selectedPokemonData = await getData<>(`https://pokeapi.co/api/v2/pokemon/${selectedPokemon}/`)
+        const selectedPokemonData = await getData<PickedPokemon>(`https://pokeapi.co/api/v2/pokemon/${selectedPokemon}/`);
+        console.log(selectedPokemonData)
         return selectedPokemonData;
     } catch (err) {
         throw err;
     }
 }
 
-// Generator Function
+// Generator Function, typed-redux-saga ile "yield" yerine "yield*" kullan
 export function* handleGetPokemons () {
-    const pokemons = yield call(fetchPokemons);
-    yield put(rootActions.pokemonsActions.setPokemons(pokemons))
+    const pokemons = yield* call(fetchPokemons);
+    yield* put(PokemonsActions.setPokemons(pokemons))
+    console.log(pokemons)
 }
 
-export function* handleGetPokemonDetail (action) {
-    const myPokemon = yield call(fetchPokemonDetail,action.payload.id);
-    yield put(rootActions.pokemonsActions.setPokemonDetail(myPokemon))
+export function* handleGetPokemonDetail (action = {} as AnyAction) {
+    const myPokemon = yield* call(fetchPokemonDetail,action.payload.index);
+    yield* put(PokemonsActions.setPokemonDetail(myPokemon))
 }
 
 export function* watchPokemons(){
-    yield takeLatest(rootConstants.pokemons.ACTION_TYPE_GET_POKEMONS, handleGetPokemons)
+    yield* takeLatest(ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_GET_POKEMONS, handleGetPokemons)
 }
 
 export function* watchPokemonDetail(){
-    yield takeLatest(rootConstants.pokemons.ACTION_TYPE_GET_POKEMON_DETAIL, handleGetPokemonDetail)
+    yield* takeLatest(ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_GET_POKEMON_DETAIL, handleGetPokemonDetail)
 }
