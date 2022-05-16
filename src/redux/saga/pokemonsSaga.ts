@@ -14,7 +14,6 @@ import { GetResult, PokemonDetail, PickedPokemon } from "../../redux/types/pokem
 const fetchPokemons = async () => {
     try{
         const pokemonsData = await getData<GetResult>("https://pokeapi.co/api/v2/pokemon?limit=9999");
-        console.log(pokemonsData)
         return pokemonsData;
     } catch (err) {
         throw err;
@@ -24,7 +23,6 @@ const fetchPokemons = async () => {
 const fetchPokemonDetail = async (selectedPokemon: PickedPokemon) => {
     try {
         const selectedPokemonData = await getData<PickedPokemon>(`https://pokeapi.co/api/v2/pokemon/${selectedPokemon}/`);
-        console.log(selectedPokemonData)
         return selectedPokemonData;
     } catch (err) {
         throw err;
@@ -33,9 +31,8 @@ const fetchPokemonDetail = async (selectedPokemon: PickedPokemon) => {
 
 // Generator Function, typed-redux-saga ile "yield" yerine "yield*" kullan
 export function* handleGetPokemons () {
-    const pokemons = yield* call(fetchPokemons);
-    yield* put(PokemonsActions.setPokemons(pokemons))
-    console.log(pokemons)
+    const pokemonList = yield* call(fetchPokemons);
+    yield* put(PokemonsActions.setPokemons(pokemonList))
 }
 
 export function* handleGetPokemonDetail (action = {} as AnyAction) {

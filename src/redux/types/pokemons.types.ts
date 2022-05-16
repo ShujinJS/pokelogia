@@ -7,11 +7,23 @@ export enum POKEMONS_ACTION_TYPES {
     ACTION_TYPE_CLEAR_POKEMON_DETAIL = "ACTION_TYPE_CLEAR_POKEMON_DETAIL"
 }
 
+export type RootState = {
+  rootState: {
+      pokemonList: GetResult;
+      selectedPokemon: PokemonDetail;
+  }
+}
+
+export type PokemonsState = {
+  pokemonList: GetResult | {};
+  selectedPokemon: PickedPokemon | {};
+}
+
 export type GetResult = {
-    count: string;
-    next: string;
-    previous?: string;
-    results?: [Pokemon] | undefined
+    count: number | null;
+    next: string | null;
+    previous: string | null ;
+    results: [Pokemon]
 }
 
 export type Pokemon = {

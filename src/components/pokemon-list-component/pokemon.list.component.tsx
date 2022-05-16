@@ -4,41 +4,40 @@ import { getData } from "../../utils/data.utils";
 import { GetResult, Pokemon } from "../../redux/types/pokemons.types";
 // Redux Saga
 import { useSelector, useDispatch } from "react-redux";
-import rootAction from '../../redux/actions/rootAction';
+// TS Types
+import { RootState } from "../../redux/types/pokemons.types"
 
 import PokemonsActions from "../../redux/actions/pokemonsActions"
 
 function PokemonList(){
-    const [pokemons, setPokemons] = useState<GetResult>();
     
-    const [searchBox, setSearchBox] = useState("");
-    
-    const pokemonsData = useSelector((state: GetResult) => state.results)
-
+    const pokemonsData = useSelector((state: RootState) => state.rootState.pokemonList)
     const dispatch = useDispatch();
 
-    const [filteredPokemons, setFilteredPokemons] = useState<[Pokemon]>(pokemons);
+    const [pokemons, setPokemons] = useState<[Pokemon]>()
 
-    // const fetchPokemons = async () => {
-    //     const pokemons = await getData<GetResult>("https://pokeapi.co/api/v2/pokemon?limit=9999");
-    //     setPokemons(pokemons.results)
-    // };
+    const [filteredPokemons, setFilteredPokemons] = useState<[Pokemon]>();
+    const [searchBox, setSearchBox] = useState("");
+
+
 
     useEffect(() => {  
-        //fetchPokemons();
         dispatch(PokemonsActions.getPokemons())
     }, []);
 
-    const newFilteredPokemons = pokemons?.filter((pokemon) => {
-        return pokemon.name.toLocaleLowerCase().includes(searchBox);
-    })
+    useEffect(() => {
+        setPokemons(pokemonsData.results)
+    },[pokemonsData])
 
     useEffect(() => {
+        const newFilteredPokemons = pokemons?.filter((pokemon: Pokemon) => {
+            return pokemon.name.toLocaleLowerCase().includes(searchBox);
+        })
         setFilteredPokemons(newFilteredPokemons);
-    },[pokemonsData, filteredPokemons])
+    },[pokemons])
 
-    console.log(filteredPokemons)
     console.log(pokemonsData)
+    console.log(pokemons)
 
     const onSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
         const searchBoxString = event.target.value.toLocaleLowerCase();
@@ -55,7 +54,7 @@ function PokemonList(){
             </form>
             <div>
                 <ul>
-                    {filteredPokemons ? filteredPokemons.map((pokemon, index) => {
+                    {pokemons ? pokemons.map((pokemon, index) => {
                         return <li key={index}>{pokemon.name}</li>
                     }) : "Loading"}
                 </ul>

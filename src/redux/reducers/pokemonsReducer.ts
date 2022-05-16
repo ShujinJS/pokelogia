@@ -2,12 +2,7 @@ import { AnyAction } from "redux";
 // Actions
 import  PokemonsActions from "../actions/pokemonsActions";
 // Types
-import { GetResult, PokemonDetail, PickedPokemon } from "../types/pokemons.types"
-
-export type PokemonsState = {
-    readonly pokemonList: GetResult | {};
-    readonly selectedPokemon: PickedPokemon | {};
-}
+import { PokemonsState } from "../types/pokemons.types"
 
 export const pokemonsState: PokemonsState = {
     pokemonList: {},
@@ -17,8 +12,6 @@ export const pokemonsState: PokemonsState = {
 // Discriminating Union "action = {} as BlablaActions"
 export const pokemonsReducer = (state = pokemonsState, action = {} as AnyAction ) : PokemonsState => {
     if(PokemonsActions.setPokemons.match(action)){
-        console.log(state)
-        console.log(action.payload)
         return { ...state, pokemonList: action.payload }
     }
 

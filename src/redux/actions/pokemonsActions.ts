@@ -17,7 +17,7 @@ import { createAction, Action, ActionWithPayload, withMatcher } from "../../util
 // Function Overloading
 export type SetPokemons = ActionWithPayload<POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMONS, GetResult>
 
-const setPokemons = withMatcher((pokemons: GetResult): SetPokemons => createAction(ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMONS, pokemons));
+const setPokemons = withMatcher((pokemonList: GetResult): SetPokemons => createAction(ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMONS, pokemonList));
 
 export type GetPokemons = Action<POKEMONS_ACTION_TYPES.ACTION_TYPE_GET_POKEMONS>
 
