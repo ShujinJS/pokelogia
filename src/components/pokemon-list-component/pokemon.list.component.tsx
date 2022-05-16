@@ -47,11 +47,11 @@ function PokemonList(){
 
     return (
         <section>
-            <h2>
+            <h2 className='text-3xl font-bold underline'>
                 Pokemons
             </h2>
             <form>
-                <input type="text" name="searchBox" onChange={onSearchChange}/>
+                <input type="text" name="searchBox" onChange={onSearchChange} placeholder="search your pokemon..."/>
             </form>
             <div>
                 <ul>

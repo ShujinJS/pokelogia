@@ -1,0 +1,9 @@
+#homepageHeader {
+  width: 70%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: red;
+}
+
+/*# sourceMappingURL=header.style.css.map */

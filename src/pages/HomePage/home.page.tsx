@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 // Components
+import Header from '../../components/header/header.component';
 import PokemonList from '../../components/pokemon-list-component/pokemon.list.component';
-// Utils
-import { getData } from "../../utils/data.utils";
+// Styling
+import "../../assets/sass/homepage-sass/homepage.style.sass"
+
 
 function HomePage(){
 
     return (
-        <section>
+        <section id="homepageContainer">
+            <Header/>
             <PokemonList/>
         </section>
     )
