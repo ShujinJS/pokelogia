@@ -10,16 +10,17 @@ import { RootState } from "../../redux/types/pokemons.types"
 import PokemonsActions from "../../redux/actions/pokemonsActions"
 
 function PokemonList(){
-    
+
     const pokemonsData = useSelector((state: RootState) => state.rootState.pokemonList)
     const dispatch = useDispatch();
 
-    const [pokemons, setPokemons] = useState<[Pokemon]>()
-
-    const [filteredPokemons, setFilteredPokemons] = useState<[Pokemon]>();
+    const [pokemons, setPokemons] = useState<Pokemon[]>()
     const [searchBox, setSearchBox] = useState("");
+    const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>();
 
-
+    const newFilteredPokemons = pokemons?.filter((pokemon: Pokemon) => {
+        return pokemon.name.toLocaleLowerCase().includes(searchBox);
+    })
 
     useEffect(() => {  
         dispatch(PokemonsActions.getPokemons())
@@ -30,14 +31,14 @@ function PokemonList(){
     },[pokemonsData])
 
     useEffect(() => {
-        const newFilteredPokemons = pokemons?.filter((pokemon: Pokemon) => {
-            return pokemon.name.toLocaleLowerCase().includes(searchBox);
-        })
         setFilteredPokemons(newFilteredPokemons);
     },[pokemons])
 
-    console.log(pokemonsData)
-    console.log(pokemons)
+    useEffect(() => {
+
+    }, [filteredPokemons, newFilteredPokemons])
+
+    console.log(newFilteredPokemons)
 
     const onSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
         const searchBoxString = event.target.value.toLocaleLowerCase();
@@ -54,7 +55,7 @@ function PokemonList(){
             </form>
             <div>
                 <ul>
-                    {pokemons ? pokemons.map((pokemon, index) => {
+                    {newFilteredPokemons ? newFilteredPokemons.map((pokemon, index) => {
                         return <li key={index}>{pokemon.name}</li>
                     }) : "Loading"}
                 </ul>

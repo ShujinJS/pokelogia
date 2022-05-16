@@ -23,7 +23,7 @@ export type GetResult = {
     count: number | null;
     next: string | null;
     previous: string | null ;
-    results: [Pokemon]
+    results: Pokemon[]
 }
 
 export type Pokemon = {

@@ -13,7 +13,7 @@ import { GetResult, PokemonDetail, PickedPokemon } from "../../redux/types/pokem
 
 const fetchPokemons = async () => {
     try{
-        const pokemonsData = await getData<GetResult>("https://pokeapi.co/api/v2/pokemon?limit=9999");
+        const pokemonsData = await getData<GetResult>("https://pokeapi.co/api/v2/pokemon?limit=20");
         return pokemonsData;
     } catch (err) {
         throw err;
