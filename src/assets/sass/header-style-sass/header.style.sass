@@ -1,8 +1,21 @@
-@use "../partial/color.sass"
+@use "../partial/color.sass" as *
 @use "../partial/flex.sass" as *
+@use "../partial/text.sass" as *
 
 #homepageHeader
-    width: 70%
-    @include flex($direction: column, $justify: center, $align: center)
-    @include color.flamed
-    
+    width: 100%
+    height: 350px
+    padding: 5px
+    margin: 0 auto
+    font-family: $header-font
+    text-align: $text-centered
+    background-color: $site-main-bg-color
+    color: $site-header-color
+    @include flex($display: flex, $direction: column, $justify: space-around, $align: center)
+
+
+#headerTitle
+    width: 400px
+    height: 150px
+    background: url("../../images/pokemon.png") no-repeat
+    background-size: contain

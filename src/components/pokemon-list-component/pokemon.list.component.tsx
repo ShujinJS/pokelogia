@@ -1,13 +1,10 @@
 import { useEffect, useState, ChangeEvent } from 'react';
-// Utils
-import { getData } from "../../utils/data.utils";
-import { GetResult, Pokemon } from "../../redux/types/pokemons.types";
 // Redux Saga
 import { useSelector, useDispatch } from "react-redux";
-// TS Types
-import { RootState } from "../../redux/types/pokemons.types"
-
 import PokemonsActions from "../../redux/actions/pokemonsActions"
+// TS Types
+import { RootState, Pokemon } from "../../redux/types/pokemons.types"
+
 
 function PokemonList(){
 
@@ -46,19 +43,22 @@ function PokemonList(){
     }
 
     return (
-        <section>
-            <h2 className='text-3xl font-bold underline'>
-                Pokemons
-            </h2>
-            <form>
-                <input type="text" name="searchBox" onChange={onSearchChange} placeholder="search your pokemon..."/>
-            </form>
-            <div>
-                <ul>
-                    {newFilteredPokemons ? newFilteredPokemons.map((pokemon, index) => {
-                        return <li key={index}>{pokemon.name}</li>
-                    }) : "Loading"}
-                </ul>
+        <section id="searchArea">
+            <div className="search-container">
+                <form>
+                    <div id="searchBar">
+                        <input type="search" onChange={onSearchChange} placeholder="Search your pokémon..."/>
+                        <span/>
+                    </div>
+                </form>
+                <div id="resultArea">
+                    <ul>
+                        {newFilteredPokemons ? newFilteredPokemons.map((pokemon, index) => {
+                            return <li key={index}>{pokemon.name}</li>
+                        }) : "Loading"}
+                    </ul>
+                </div>
+                <div id="firstGenSquad"/>
             </div>
         </section>
     )

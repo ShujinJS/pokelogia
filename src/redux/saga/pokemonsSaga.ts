@@ -1,7 +1,3 @@
-//import { call, put } from "@redux-saga/core/effects";
-import rootActions from "../actions/rootAction";
-import axios from "axios";
-//import { takeLatest } from "redux-saga/effects";
 import { takeLatest, call, put } from "typed-redux-saga";
 import { ROOT_ACTION_TYPES } from "../types/root.action.types";
 import PokemonsActions from "../actions/pokemonsActions"
@@ -9,7 +5,7 @@ import PokemonsActions from "../actions/pokemonsActions"
 import { AnyAction } from "redux";
 // Utils
 import { getData } from "../../utils/data.utils";
-import { GetResult, PokemonDetail, PickedPokemon } from "../../redux/types/pokemons.types";
+import { GetResult, PickedPokemon } from "../../redux/types/pokemons.types";
 
 const fetchPokemons = async () => {
     try{

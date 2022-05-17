@@ -1,0 +1,40 @@
+@use "../partial/color.sass" as *
+@use "../partial/flex.sass" as *
+
+#homepageContainer
+    width: 100%
+    height: 100%
+    @include flex($display: flex, $direction: column, $justify: space-between, $align: center)
+
+#searchArea
+    width: 100%
+    height: 700px
+    @include flex($display: flex, $direction: column, $justify: space-around)
+
+.search-container
+    width: 250px
+    height: 100%
+
+#searchArea form
+    width: 100%
+
+#searchBar
+    width: inherit
+    padding: 15px
+    border-topradius: 8px
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px
+
+#resultArea
+    width: 100%
+    height: 300px
+    padding: 15px
+    margin-top: 7px
+    overflow: auto
+    border-topradius: 8px
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px
+
+#firstGenSquad
+    width: 300px
+    height: 200px
+    background: url("../../images/gen1squad.png") no-repeat
+    background-size: contain

@@ -3,10 +3,15 @@ import { Routes, Route } from "react-router-dom";
 // Pages
 import HomePage from "../pages/HomePage/home.page";
 
+// Styling
+import "../assets/sass/route-style-sass/route.style.sass"
+
 export default function Router(){
     return (
-        <Routes>
-            <Route path="/" element={<HomePage/>}/>
-        </Routes>
+        <div id="siteRouter">
+            <Routes>
+                <Route path="/" element={<HomePage/>}/>
+            </Routes>
+        </div>
     )
 }
