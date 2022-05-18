@@ -9,11 +9,14 @@ import { RootState, Pokemon, PickedPokemon } from "../../redux/types/pokemons.ty
 function PokemonList(){
 
     const pokemonsData = useSelector((state: RootState) => state.rootState.pokemonList)
+    const myPokemon = useSelector((state: RootState) => state.rootState.selectedPokemon)
+    console.log(myPokemon)
     const dispatch = useDispatch();
 
     const [pokemons, setPokemons] = useState<Pokemon[]>()
     const [searchBox, setSearchBox] = useState("");
     const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>();
+    const [pickedPokemon, setPickedPokemon] = useState("");
 
     const newFilteredPokemons = pokemons?.filter((pokemon: Pokemon) => {
         return pokemon.name.toLocaleLowerCase().includes(searchBox);
@@ -25,7 +28,7 @@ function PokemonList(){
 
     useEffect(() => {
         setPokemons(pokemonsData.results)
-    },[pokemonsData])
+    },[pokemonsData, myPokemon])
 
     useEffect(() => {
         setFilteredPokemons(newFilteredPokemons);
@@ -43,8 +46,8 @@ function PokemonList(){
     const onClickDetail = (event: MouseEvent<HTMLLIElement>): void => {
         const {target} = event
         const pokemonUrl = (target as HTMLLIElement).getAttribute("data-url");
-        console.log(pokemonUrl)
-        //dispatch(PokemonsActions.setPokemonDetail(pokemonUrl))
+        setPickedPokemon(pokemonUrl)
+        //dispatch(PokemonsActions.getPokemonDetail("bulbasaur"))
     }
 
     return (

@@ -6,7 +6,7 @@ import { PokemonsState } from "../types/pokemons.types"
 
 export const pokemonsState: PokemonsState = {
     pokemonList: {},
-    selectedPokemon: ""
+    selectedPokemon: {}
 };
 
 // Discriminating Union "action = {} as BlablaActions"
@@ -16,7 +16,7 @@ export const pokemonsReducer = (state = pokemonsState, action = {} as AnyAction 
     }
 
     if(PokemonsActions.setPokemonDetail.match(action)){
-        return { ...state, selectedPokemon: action.payload.url }
+        return { ...state, selectedPokemon: action.payload }
     }
 
     return state;

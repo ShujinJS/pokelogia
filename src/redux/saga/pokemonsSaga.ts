@@ -5,7 +5,7 @@ import PokemonsActions from "../actions/pokemonsActions"
 import { AnyAction } from "redux";
 // Utils
 import { getData } from "../../utils/data.utils";
-import { GetResult, Pokemon, PickedPokemon } from "../../redux/types/pokemons.types";
+import { GetResult, Pokemon, PokemonDetail } from "../../redux/types/pokemons.types";
 
 const fetchPokemons = async () => {
     try{
@@ -16,9 +16,9 @@ const fetchPokemons = async () => {
     }
 };
 
-const fetchPokemonDetail = async (selectedPokemon: PickedPokemon) => {
+const fetchPokemonDetail = async (selectedPokemon: string) => {
     try {
-        const selectedPokemonData = await getData<PickedPokemon>(selectedPokemon.url);
+        const selectedPokemonData = await getData<PokemonDetail>(`https://pokeapi.co/api/v2/pokemon/${selectedPokemon}`);
         return selectedPokemonData;
     } catch (err) {
         throw err;
@@ -32,7 +32,7 @@ export function* handleGetPokemons () {
 }
 
 export function* handleGetPokemonDetail (action = {} as AnyAction) {
-    const myPokemon = yield* call(fetchPokemonDetail,action.payload.url);
+    const myPokemon = yield* call(fetchPokemonDetail,action.payload);
     yield* put(PokemonsActions.setPokemonDetail(myPokemon))
 }
 

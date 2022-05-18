@@ -23,13 +23,13 @@ export type GetPokemons = Action<POKEMONS_ACTION_TYPES.ACTION_TYPE_GET_POKEMONS>
 
 const getPokemons = withMatcher((): GetPokemons => createAction(ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_GET_POKEMONS));
 
-export type SetPokemonDetail = ActionWithPayload<POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMON_DETAIL, PickedPokemon>
+export type SetPokemonDetail = ActionWithPayload<POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMON_DETAIL, PokemonDetail>
 
-const setPokemonDetail = withMatcher(( pickedPokemon: PickedPokemon ): SetPokemonDetail => createAction(ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMON_DETAIL, pickedPokemon));
+const setPokemonDetail = withMatcher(( pickedPokemon: PokemonDetail ): SetPokemonDetail => createAction(ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMON_DETAIL, pickedPokemon));
 
-export type GetPokemonDetail = ActionWithPayload<POKEMONS_ACTION_TYPES.ACTION_TYPE_GET_POKEMON_DETAIL, PokemonDetail>
+export type GetPokemonDetail = ActionWithPayload<POKEMONS_ACTION_TYPES.ACTION_TYPE_GET_POKEMON_DETAIL, string>
 
-const getPokemonDetail = withMatcher(( param: PokemonDetail ) => 
+const getPokemonDetail = withMatcher(( param: string ) => 
     createAction(ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_GET_POKEMON_DETAIL, param));
 
 export type ClearPokemonDetail = Action<POKEMONS_ACTION_TYPES.ACTION_TYPE_CLEAR_POKEMON_DETAIL>
