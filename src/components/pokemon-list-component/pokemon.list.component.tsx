@@ -40,7 +40,7 @@ function PokemonList(){
         setSearchBox(searchBoxString);
     }
 
-    const onClickDetail = (event: MouseEvent<HTMLElement>): void => {
+    const onClickDetail = (event: MouseEvent<HTMLLIElement>): void => {
         const {target} = event
         const pokemonUrl = (target as HTMLLIElement).getAttribute("data-url");
         console.log(pokemonUrl)

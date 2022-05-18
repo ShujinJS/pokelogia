@@ -37,9 +37,6 @@ export type ClearPokemonDetail = Action<POKEMONS_ACTION_TYPES.ACTION_TYPE_CLEAR_
 const clearPokemonDetail = withMatcher((): ClearPokemonDetail => 
     createAction(ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_CLEAR_POKEMON_DETAIL));
 
-// Union, we don't need this anymore
-// export type PokemonsActions = SetPokemons | GetPokemons |SetPokemonDetail | GetPokemonDetail | ClearPokemonDetail;
-
 const pokemonsActions = {
     setPokemons,
     getPokemons,

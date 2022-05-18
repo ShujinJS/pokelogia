@@ -16,8 +16,8 @@ export type RootState = {
 
 export type PokemonsState = {
   pokemonList: GetResult | {};
-  selectedPokemon: PickedPokemon | {};
-}
+  selectedPokemon: PickedPokemon | string | null;
+} 
 
 export type GetResult = {
     count: number | null;
