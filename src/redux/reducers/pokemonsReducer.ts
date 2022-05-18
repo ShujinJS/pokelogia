@@ -16,19 +16,8 @@ export const pokemonsReducer = (state = pokemonsState, action = {} as AnyAction 
     }
 
     if(PokemonsActions.setPokemonDetail.match(action)){
-        return { ...state, selectedPokemon: action.payload }
+        return { ...state, selectedPokemon: action.payload.url }
     }
 
     return state;
-
-    // switch (action.type){
-    //     case ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMONS:
-    //         return { ...state, pokemonList: action.payload }
-    //         break;
-    //     case ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMON_DETAIL:
-    //         return { ...state, selectedPokemon: action.payload }
-    //         break
-    //     default:
-    //         return state;
-    // }
 }

@@ -1,9 +1,9 @@
-import { useEffect, useState, ChangeEvent } from 'react';
+import { useEffect, useState, ChangeEvent, MouseEvent } from 'react';
 // Redux Saga
 import { useSelector, useDispatch } from "react-redux";
 import PokemonsActions from "../../redux/actions/pokemonsActions"
 // TS Types
-import { RootState, Pokemon } from "../../redux/types/pokemons.types"
+import { RootState, Pokemon, PickedPokemon } from "../../redux/types/pokemons.types"
 
 
 function PokemonList(){
@@ -35,11 +35,16 @@ function PokemonList(){
 
     }, [filteredPokemons, newFilteredPokemons])
 
-    console.log(newFilteredPokemons)
-
     const onSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
         const searchBoxString = event.target.value.toLocaleLowerCase();
         setSearchBox(searchBoxString);
+    }
+
+    const onClickDetail = (event: MouseEvent<HTMLElement>): void => {
+        const {target} = event
+        const pokemonUrl = (target as HTMLLIElement).getAttribute("data-url");
+        console.log(pokemonUrl)
+        //dispatch(PokemonsActions.setPokemonDetail(pokemonUrl))
     }
 
     return (
@@ -48,18 +53,18 @@ function PokemonList(){
                 <form>
                     <div id="searchBar">
                         <input type="search" onChange={onSearchChange} placeholder="Search your pokémon..."/>
-                        <span/>
+                        <div/>
                     </div>
                 </form>
                 <div id="resultArea">
                     <ul>
                         {newFilteredPokemons ? newFilteredPokemons.map((pokemon, index) => {
-                            return <li key={index}>{pokemon.name}</li>
+                            return <li key={index} data-url={pokemon.url} onClick={onClickDetail} className="pokemon-item">{pokemon.name}</li>
                         }) : "Loading"}
                     </ul>
                 </div>
-                <div id="firstGenSquad"/>
             </div>
+            <div id="firstGenSquad"/>
         </section>
     )
 }

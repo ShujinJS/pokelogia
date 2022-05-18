@@ -10,7 +10,7 @@ export enum POKEMONS_ACTION_TYPES {
 export type RootState = {
   rootState: {
       pokemonList: GetResult;
-      selectedPokemon: PokemonDetail;
+      selectedPokemon: PickedPokemon;
   }
 }
 
@@ -32,7 +32,7 @@ export type Pokemon = {
 }
 
 export type PickedPokemon = {
-    index: Number
+    url: string
 }
 
 export interface PokemonDetail {

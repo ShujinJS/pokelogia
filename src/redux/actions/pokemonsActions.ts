@@ -2,7 +2,7 @@ import { ROOT_ACTION_TYPES } from './../types/root.action.types';
 //? ROOT_ACTION_TYPE üzerinden ulaşamadım.
 import { POKEMONS_ACTION_TYPES } from "../types/pokemons.types";
 // Pokemon Types
-import { GetResult, PokemonDetail, PickedPokemon } from "../types/pokemons.types"
+import { GetResult, PokemonDetail, Pokemon, PickedPokemon } from "../types/pokemons.types"
 import { createAction, Action, ActionWithPayload, withMatcher } from "../../utils/reducer.utils";
 
 // const setPokemons = (pokemons) => ({
@@ -25,7 +25,7 @@ const getPokemons = withMatcher((): GetPokemons => createAction(ROOT_ACTION_TYPE
 
 export type SetPokemonDetail = ActionWithPayload<POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMON_DETAIL, PickedPokemon>
 
-const setPokemonDetail = withMatcher((pickedPokemon: PickedPokemon): SetPokemonDetail => createAction(ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMON_DETAIL, pickedPokemon));
+const setPokemonDetail = withMatcher(( pickedPokemon: PickedPokemon ): SetPokemonDetail => createAction(ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMON_DETAIL, pickedPokemon));
 
 export type GetPokemonDetail = ActionWithPayload<POKEMONS_ACTION_TYPES.ACTION_TYPE_GET_POKEMON_DETAIL, PokemonDetail>
 
