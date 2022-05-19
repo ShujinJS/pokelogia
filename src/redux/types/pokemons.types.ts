@@ -31,9 +31,7 @@ export type Pokemon = {
     url: string
 }
 
-export type PickedPokemon = {
-    url: string
-}
+
 
 export interface PokemonDetail {
     abilities?: (AbilitiesEntity)[] | null;

@@ -2,17 +2,8 @@ import { ROOT_ACTION_TYPES } from './../types/root.action.types';
 //? ROOT_ACTION_TYPE üzerinden ulaşamadım.
 import { POKEMONS_ACTION_TYPES } from "../types/pokemons.types";
 // Pokemon Types
-import { GetResult, PokemonDetail, Pokemon, PickedPokemon } from "../types/pokemons.types"
+import { GetResult, PokemonDetail } from "../types/pokemons.types"
 import { createAction, Action, ActionWithPayload, withMatcher } from "../../utils/reducer.utils";
-
-// const setPokemons = (pokemons) => ({
-//     type: rootConstant.pokemons.ACTION_TYPE_SET_POKEMONS,
-//     payload: pokemons
-// })
-
-// const getPokemons = () => ({
-//     type: ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_GET_POKEMONS
-// })
 
 // Function Overloading
 export type SetPokemons = ActionWithPayload<POKEMONS_ACTION_TYPES.ACTION_TYPE_SET_POKEMONS, GetResult>

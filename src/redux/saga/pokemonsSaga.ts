@@ -5,7 +5,7 @@ import PokemonsActions from "../actions/pokemonsActions"
 import { AnyAction } from "redux";
 // Utils
 import { getData } from "../../utils/data.utils";
-import { GetResult, Pokemon, PokemonDetail } from "../../redux/types/pokemons.types";
+import { GetResult, PokemonDetail } from "../../redux/types/pokemons.types";
 
 const fetchPokemons = async () => {
     try{
@@ -18,7 +18,6 @@ const fetchPokemons = async () => {
 
 const fetchPokemonDetail = async (selectedPokemon: string) => {
     try {
-        //const selectedPokemonData = await getData<PokemonDetail>(`https://pokeapi.co/api/v2/pokemon/${selectedPokemon}`);
         const selectedPokemonData = await getData<PokemonDetail>(selectedPokemon);
         return selectedPokemonData;
     } catch (err) {

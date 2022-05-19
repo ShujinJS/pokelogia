@@ -3,7 +3,7 @@ import { useEffect, useState, ChangeEvent, MouseEvent } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import PokemonsActions from "../../redux/actions/pokemonsActions"
 // TS Types
-import { RootState, Pokemon, PickedPokemon } from "../../redux/types/pokemons.types"
+import { RootState, Pokemon } from "../../redux/types/pokemons.types"
 
 
 function PokemonList(){
