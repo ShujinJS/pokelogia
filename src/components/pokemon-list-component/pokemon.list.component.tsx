@@ -4,23 +4,32 @@ import { useSelector, useDispatch } from "react-redux";
 import PokemonsActions from "../../redux/actions/pokemonsActions"
 // TS Types
 import { RootState, Pokemon } from "../../redux/types/pokemons.types"
-
+// Routing
+import { useNavigate } from "react-router-dom";
 
 function PokemonList(){
 
+    // Saga
     const pokemonsData = useSelector((state: RootState) => state.rootState.pokemonList)
     const myPokemon = useSelector((state: RootState) => state.rootState.selectedPokemon)
-    console.log(myPokemon)
     const dispatch = useDispatch();
 
     const [pokemons, setPokemons] = useState<Pokemon[]>()
     const [searchBox, setSearchBox] = useState("");
     const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>();
-    const [pickedPokemon, setPickedPokemon] = useState<string | null>("");
+    const [pickedPokemonName, setPickedPokemonName] = useState<string | null>("")
+    const [pickedPokemonUrl, setPickedPokemonUrl] = useState<string | null>("");
 
     const newFilteredPokemons = pokemons?.filter((pokemon: Pokemon) => {
         return pokemon.name.toLocaleLowerCase().includes(searchBox);
     })
+
+    // Routing
+    const navigate = useNavigate();
+    const routeChange = ( name: string | null ) => {
+    let path = `/pokemon/${name}`;
+        navigate(path);
+    }
 
     useEffect(() => {  
         dispatch(PokemonsActions.getPokemons())
@@ -46,8 +55,11 @@ function PokemonList(){
     const onClickDetail = (event: MouseEvent<HTMLLIElement>): void => {
         const {target} = event
         const pokemonUrl = (target as HTMLLIElement).getAttribute("data-url");
-        setPickedPokemon(pokemonUrl)
-        if(pickedPokemon!=="") dispatch(PokemonsActions.getPokemonDetail(pickedPokemon))
+        const pokemonName = (target as HTMLLIElement).getAttribute("data-name")
+        setPickedPokemonName(pokemonName);
+        setPickedPokemonUrl(pokemonUrl);
+        if(pickedPokemonUrl!=="") dispatch(PokemonsActions.getPokemonDetail(pickedPokemonUrl))
+        if(pickedPokemonName!=="")routeChange(pickedPokemonName)
     }
 
     return (
@@ -62,7 +74,7 @@ function PokemonList(){
                 <div id="resultArea">
                     <ul>
                         {newFilteredPokemons ? newFilteredPokemons.map((pokemon, index) => {
-                            return <li key={index} data-url={pokemon.url} onClick={onClickDetail} className="pokemon-item">{pokemon.name}</li>
+                            return <li key={index}  data-name={pokemon.name} data-url={pokemon.url} onClick={onClickDetail} className="pokemon-item">{pokemon.name}</li>
                         }) : "Loading"}
                     </ul>
                 </div>

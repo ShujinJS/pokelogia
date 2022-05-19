@@ -2,6 +2,7 @@
 import { Routes, Route } from "react-router-dom";
 // Pages
 import HomePage from "../pages/HomePage/home.page";
+import PokemonPage from "../pages/PokemonPage/pokemon.page";
 
 // Styling
 import "../assets/sass/route-style-sass/route.style.sass"
@@ -11,6 +12,7 @@ export default function Router(){
         <div id="siteRouter">
             <Routes>
                 <Route path="/" element={<HomePage/>}/>
+                <Route path="/pokemon/:name" element={<PokemonPage/>}/>
             </Routes>
         </div>
     )
