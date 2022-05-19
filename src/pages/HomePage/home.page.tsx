@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 // Components
 import Header from '../../components/header/header.component';
-import PokemonList from '../../components/pokemon-list-component/pokemon.list.component';
+import PokemonList from '../../components/pokemonlist-component/pokemonlist.component';
 // Styling
-import "../../assets/css/homepage-style-css/homepage.style.css"
+import "../../assets/css/pages-css/homepage-css/homepage.style.css"
 
 
 function HomePage(){

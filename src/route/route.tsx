@@ -2,17 +2,17 @@
 import { Routes, Route } from "react-router-dom";
 // Pages
 import HomePage from "../pages/HomePage/home.page";
-import PokemonPage from "../pages/PokemonPage/pokemon.page";
+import PokemonDetailPage from "../pages/PokemonDetailPage/pokemondetail.page";
 
 // Styling
-import "../assets/sass/route-style-sass/route.style.sass"
+import "../assets/css/route-css/route.style.css"
 
 export default function Router(){
     return (
         <div id="siteRouter">
             <Routes>
                 <Route path="/" element={<HomePage/>}/>
-                <Route path="/pokemon/:name" element={<PokemonPage/>}/>
+                <Route path="/pokemon/:name" element={<PokemonDetailPage/>}/>
             </Routes>
         </div>
     )

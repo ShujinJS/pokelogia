@@ -1,0 +1,16 @@
+@use "../../partial/color.sass" as *
+@use "../../partial/flex.sass" as *
+
+.pokemon-detail-container
+    width: 500px
+    height: 700px
+    background-color: $site-main-bg-color
+
+.pokemon-detail-header
+    width: 100%
+    padding: 20px
+    @include flex($display: flex, $justify: space-between)
+
+.pokemon-detail-header div
+    width: 100px
+    height: 100%

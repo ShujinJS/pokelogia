@@ -1,0 +1,21 @@
+.pokemon-detail-container {
+  width: 500px;
+  height: 700px;
+  background-color: #EF5350;
+}
+
+.pokemon-detail-header {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pokemon-detail-header div {
+  width: 100px;
+  height: 100%;
+}
+
+/*# sourceMappingURL=pokemondetail.style.css.map */

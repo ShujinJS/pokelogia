@@ -17,7 +17,7 @@
 #headerTitle {
   width: 400px;
   height: 150px;
-  background: url("../../images/pokemon.png") no-repeat;
+  background: url("../../../images/pokemon.png") no-repeat;
   background-size: contain;
 }
 

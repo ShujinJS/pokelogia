@@ -1,9 +1,8 @@
-@use "../partial/color.sass" as *
-@use "../partial/flex.sass" as *
+@use "../../partial/color.sass" as *
+@use "../../partial/flex.sass" as *
 
 #homepageContainer
     width: 100%
-    height: 100%
     @include flex($display: flex, $direction: column, $justify: space-between, $align: center)
 
 #searchArea
@@ -30,7 +29,7 @@
 #searchBar div
     width: 10%
     height: 20px
-    background: url("../../images/search-icon.png") no-repeat center
+    background: url("../../../images/search-icon.png") no-repeat center
     background-size: contain
 
 #resultArea
@@ -45,7 +44,7 @@
 #firstGenSquad
     width: 300px
     height: 200px
-    background: url("../../images/gen1squad.png") no-repeat
+    background: url("../../../images/gen1squad.png") no-repeat
     background-size: contain
 
 .pokemon-item

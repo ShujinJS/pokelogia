@@ -11,7 +11,6 @@ function PokemonList(){
 
     // Saga
     const pokemonsData = useSelector((state: RootState) => state.rootState.pokemonList)
-    const myPokemon = useSelector((state: RootState) => state.rootState.selectedPokemon)
     const dispatch = useDispatch();
 
     const [pokemons, setPokemons] = useState<Pokemon[]>()
@@ -33,7 +32,7 @@ function PokemonList(){
 
     useEffect(() => {  
         dispatch(PokemonsActions.getPokemons())
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         setPokemons(pokemonsData.results)

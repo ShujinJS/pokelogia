@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom"
 
 // Styling
-import "../../assets/sass/navbar-style-sass/navbar.style.sass"
+import "../../assets/css/components-css/navbar-css/navbar.style.css"
 
 export default function NavBar(){
     
