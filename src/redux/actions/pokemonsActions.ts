@@ -29,7 +29,7 @@ const setPokemonDetail = withMatcher(( pickedPokemon: PokemonDetail ): SetPokemo
 
 export type GetPokemonDetail = ActionWithPayload<POKEMONS_ACTION_TYPES.ACTION_TYPE_GET_POKEMON_DETAIL, string>
 
-const getPokemonDetail = withMatcher(( param: string ) => 
+const getPokemonDetail = withMatcher(( param: string | null ) => 
     createAction(ROOT_ACTION_TYPES.POKEMONS_ACTION_TYPES.ACTION_TYPE_GET_POKEMON_DETAIL, param));
 
 export type ClearPokemonDetail = Action<POKEMONS_ACTION_TYPES.ACTION_TYPE_CLEAR_POKEMON_DETAIL>

@@ -16,7 +16,7 @@ function PokemonList(){
     const [pokemons, setPokemons] = useState<Pokemon[]>()
     const [searchBox, setSearchBox] = useState("");
     const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>();
-    const [pickedPokemon, setPickedPokemon] = useState("");
+    const [pickedPokemon, setPickedPokemon] = useState<string | null>("");
 
     const newFilteredPokemons = pokemons?.filter((pokemon: Pokemon) => {
         return pokemon.name.toLocaleLowerCase().includes(searchBox);
@@ -28,7 +28,7 @@ function PokemonList(){
 
     useEffect(() => {
         setPokemons(pokemonsData.results)
-    },[pokemonsData, myPokemon])
+    },[pokemonsData])
 
     useEffect(() => {
         setFilteredPokemons(newFilteredPokemons);
@@ -47,7 +47,7 @@ function PokemonList(){
         const {target} = event
         const pokemonUrl = (target as HTMLLIElement).getAttribute("data-url");
         setPickedPokemon(pokemonUrl)
-        //dispatch(PokemonsActions.getPokemonDetail("bulbasaur"))
+        if(pickedPokemon!=="") dispatch(PokemonsActions.getPokemonDetail(pickedPokemon))
     }
 
     return (

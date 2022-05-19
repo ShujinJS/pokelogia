@@ -18,7 +18,8 @@ const fetchPokemons = async () => {
 
 const fetchPokemonDetail = async (selectedPokemon: string) => {
     try {
-        const selectedPokemonData = await getData<PokemonDetail>(`https://pokeapi.co/api/v2/pokemon/${selectedPokemon}`);
+        //const selectedPokemonData = await getData<PokemonDetail>(`https://pokeapi.co/api/v2/pokemon/${selectedPokemon}`);
+        const selectedPokemonData = await getData<PokemonDetail>(selectedPokemon);
         return selectedPokemonData;
     } catch (err) {
         throw err;
