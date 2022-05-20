@@ -4,13 +4,86 @@
 .pokemon-detail-container
     width: 500px
     height: 700px
-    background-color: $site-main-bg-color
+    box-shadow: $header-shadow
 
-.pokemon-detail-header
+.pokemon-detail-row
     width: 100%
     padding: 20px
+
+.pokemon-detail-header
+    font-size: 14px
+    background-color: $site-main-bg-color
     @include flex($display: flex, $justify: space-between)
 
 .pokemon-detail-header div
-    width: 100px
+    width: 100%
     height: 100%
+
+.pokemon-avatar
+    border-radius: 50%
+    box-shadow: $avatar-shadow
+    background-color: $site-header-color
+
+.pokeball-btn
+    position: absolute
+    padding: 20px
+    font-size: 11px
+    color: black
+    margin-top: -30px
+    border-radius: 55%
+    border: 1px solid black
+    background-color: $site-header-color
+
+.pokemon-detail-type
+    color: $site-header-color
+    padding: 5px 10px
+    border-radius: 13px
+
+.pokemon-detail-moves
+    overflow: auto
+
+.grass-type
+    background-color: $grass-type
+    
+
+.poison-type
+    background-color: $poison-type
+
+.fire-type
+    background-color: $fire-type
+
+.water-type
+    background-color: $water-type
+
+.electric-type
+    background-color: $electric-type
+
+.flying-type
+    background-color: $flying-type
+
+.ice-type
+    background-color: $ice-type
+
+.rock-type
+    background-color: $rock-type
+
+.ground-type
+    background-color: $ground-type
+
+.steel-type
+    background-color: $steel-type
+
+.dragon-type
+    background-color: $dragon-type
+
+.psychic-type
+    background-color: $psychic-type
+
+.ghost-type
+    background-color: $ghost-type
+
+.dark-type
+    background-color: $dark-type
+
+.normal-type
+    background-color: $normal-type
