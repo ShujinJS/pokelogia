@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Header from '../../components/header/header.component';
 import PokemonList from '../../components/pokemonlist-component/pokemonlist.component';
 // Styling
-import "../../assets/css/pages-css/homepage-css/homepage.style.css"
+import "../../assets/style/pages-style/homepage-style/homepage.style.css"
 
 
 function HomePage(){

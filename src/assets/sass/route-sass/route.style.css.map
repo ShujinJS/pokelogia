@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,WAAW,CAAC;EACR,KAAK,EAAE,IAAI;EACX,QAAQ,EAAE,QAAQ;EAClB,UAAU,EAAE,IAAI;EAChB,OAAO,EAAE,EAAE;CAAG",
-    "sources": [
-        "route.style.sass"
-    ],
-    "names": [],
-    "file": "route.style.css"
-}

@@ -1,4 +1,4 @@
-import "../../assets/css/components-css/header-css/header.style.css"
+import "../../assets/style/components-style/header-style/header.style.css"
 export default function Header(){
 
     return (

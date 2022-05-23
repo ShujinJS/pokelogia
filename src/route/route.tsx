@@ -5,7 +5,7 @@ import HomePage from "../pages/HomePage/home.page";
 import PokemonDetailPage from "../pages/PokemonDetailPage/pokemondetail.page";
 
 // Styling
-import "../assets/css/route-css/route.style.css"
+import "../assets/style/route-style/route.style.css"
 
 export default function Router(){
     return (

@@ -4,12 +4,11 @@ import { useSelector } from "react-redux";
 // TS Types
 import { RootState } from "../../redux/types/pokemons.types"
 // Styling
-import "../../assets/css/components-css/pokemondetail-css/pokemondetail.style.css"
+import "../../assets/style/components-style/pokemondetail-style/pokemondetail.style.css"
 
 export default function PokemonDetailComponent(){
 
     const myPokemon = useSelector((state: RootState) => state.rootState.selectedPokemon)
-    console.log(myPokemon)
 
     let pokemonImage;
  
@@ -74,7 +73,9 @@ export default function PokemonDetailComponent(){
             </div>
             <div className="overflow-auto h-1/2">
                 <table className="w-full">
-                    {myPokemon.moves ? myPokemon.moves.map((move, index) => <tr><td key={index} className={index%2 == 0 ? "bg-white p-2 text-sm" : "bg-zinc-300 p-2 text-sm"}>{move.move.name}</td></tr>) : ""}
+                    <tbody>
+                        {myPokemon.moves ? myPokemon.moves.map((move, index) => <tr><td key={index} className={index%2 == 0 ? "bg-white p-2 text-sm" : "bg-zinc-300 p-2 text-sm"}>{move.move.name}</td></tr>) : <tr/>}
+                    </tbody>
                 </table>
             </div>
         </div>

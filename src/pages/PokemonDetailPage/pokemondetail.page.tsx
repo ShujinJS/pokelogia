@@ -1,6 +1,6 @@
 import PokemonDetailComponent from "../../components/pokemondetail-component/pokemondetail.component";
 // Styling
-import "../../assets/css/pages-css/pokemondetailpage-css/pokemondetailpage.style.css"
+import "../../assets/style/pages-style/pokemondetailpage-style/pokemondetailpage.style.css"
 
 export default function PokemonDetailPage(){
 
