@@ -4,20 +4,21 @@
 footer{
     width: 100%;
     padding: 20px;
+    font-size: 12px;
     color: $site-header-color;
     background-color: $site-footer-bg-color;
     @include flex($display: flex, $direction: column, $justify: center);
     align-content: space-around;
 
-    ul{
-        width: 200px;
+    .footer-icons-list{
+        width: 120px;
+        margin-bottom: 10px;
         @include flex($display: flex, $justify: space-around);
 
         .icon{
-            width: 40px;
-            height: 40px;
+            width: 25px;
+            height: 25px;
         }
     }
-
 
 }

@@ -27,7 +27,7 @@ function PokemonList(){
 
     useEffect(() => {  
         dispatch(PokemonsActions.getPokemons())
-    }, [dispatch, pokemonsData]);
+    }, []);
 
     const onSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
         const searchBoxString = event.target.value.toLocaleLowerCase();

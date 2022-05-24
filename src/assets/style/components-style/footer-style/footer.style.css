@@ -1,6 +1,7 @@
 footer {
   width: 100%;
   padding: 20px;
+  font-size: 12px;
   color: #f3f3f3;
   background-color: #3B5BA6;
   display: flex;
@@ -9,16 +10,17 @@ footer {
   align-items: center;
   align-content: space-around;
 }
-footer ul {
-  width: 200px;
+footer .footer-icons-list {
+  width: 120px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
-footer ul .icon {
-  width: 40px;
-  height: 40px;
+footer .footer-icons-list .icon {
+  width: 25px;
+  height: 25px;
 }
 
 /*# sourceMappingURL=footer.style.css.map */

@@ -38,13 +38,13 @@ export default function PokemonDetailComponent(){
                             <span>Base Exp: {myPokemon.base_experience}</span>
                         </div>
                         <div>
-                            <span>Abilities:</span>
+                            <span className="font-bold text-gray-700">Abilities:</span>
                             <ul className="flex">
                                 {myPokemon.abilities ? myPokemon.abilities.map((ability, index) => <li key={index} className="mr-2">{ability.ability.name}</li>) : ""}
                             </ul>
                         </div>
                         <div>
-                            <span className="border-y-black">Stats:</span>
+                            <span className="font-bold text-gray-700">Stats:</span>
                             <div className="flex">
                                 <ul className="mr-3">
                                     <li>hp</li>
@@ -55,7 +55,7 @@ export default function PokemonDetailComponent(){
                                     <li>speed</li>
                                 </ul>
                                 <ul>
-                                    {myPokemon.stats ? myPokemon.stats.map((stat, index) => <li key={index} className={stat.base_stat < 70 ? "text-rose-400" : "text-lime-400"}>:  {stat.base_stat}</li>) : ""}
+                                    {myPokemon.stats ? myPokemon.stats.map((stat, index) => <li key={index} className={stat.base_stat < 70 ? "text-rose-700" : "text-lime-400"}>:  {stat.base_stat}</li>) : ""}
                                 </ul>
                             </div>
                         </div>
